@@ -2,10 +2,16 @@
 <html lang="id">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Surat Rekomendasi - DPMPTSP Kabupaten Pasuruan</title>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>
+Surat Rekomendasi - DPMPTSP Kabupaten Pasuruan
+</title>
+
 
 <style>
 
@@ -24,9 +30,15 @@ body {
 }
 
 body {
+
     background: #d2d2d2;
+
     color: #111;
-    font-family: "Times New Roman", Times, serif;
+
+    font-family:
+        "Times New Roman",
+        Times,
+        serif;
 }
 
 
@@ -35,36 +47,51 @@ body {
 ========================================================= */
 
 .toolbar {
+
     position: sticky;
+
     top: 0;
+
     z-index: 9999;
 
     width: 100%;
+
     padding: 10px;
 
     display: flex;
+
     justify-content: center;
+
     gap: 8px;
 
-    background: rgba(30,30,30,.95);
+    background:
+        rgba(30,30,30,.95);
 }
 
+
 .toolbar button {
+
     border: none;
+
     border-radius: 5px;
 
-    padding: 9px 16px;
+    padding:
+        9px 16px;
 
-    background: white;
+    background: #fff;
+
     color: #111;
 
     font-family: Arial, sans-serif;
+
     font-size: 14px;
 
     cursor: pointer;
 }
 
+
 .toolbar button:hover {
+
     background: #ddd;
 }
 
@@ -74,12 +101,16 @@ body {
 ========================================================= */
 
 .document-viewer {
+
     width: 100%;
 
-    padding: 20px 0 40px;
+    padding:
+        20px 0 40px;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 
     gap: 20px;
@@ -91,30 +122,37 @@ body {
 ========================================================= */
 
 .page {
+
     position: relative;
 
     width: 210mm;
+
     height: 297mm;
 
     background: #fff;
 
     padding:
-        17mm
+        16mm
         20mm
         20mm
         25mm;
 
     box-shadow:
-        0 2px 10px rgba(0,0,0,.30);
-
-    overflow: visible;
+        0 2px 10px
+        rgba(0,0,0,.30);
 
     page-break-after: always;
+
     break-after: page;
+
+    overflow: hidden;
 }
 
+
 .page:last-child {
+
     page-break-after: auto;
+
     break-after: auto;
 }
 
@@ -124,15 +162,13 @@ body {
 ========================================================= */
 
 .letterhead {
+
     width: 100%;
 }
 
 
-/* ---------------------------------------------------------
-   TABEL KOP
---------------------------------------------------------- */
-
 .letterhead-table {
+
     width: 100%;
 
     border-collapse: collapse;
@@ -141,11 +177,12 @@ body {
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    LOGO
---------------------------------------------------------- */
+========================================================= */
 
 .logo-cell {
+
     width: 39mm;
 
     vertical-align: middle;
@@ -153,13 +190,17 @@ body {
     text-align: center;
 
     padding-left: 5mm;
+
     padding-right: 3mm;
 }
 
+
 .logo-cell img {
+
     display: block;
 
     width: 34mm;
+
     height: 34mm;
 
     object-fit: contain;
@@ -168,11 +209,12 @@ body {
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    TEKS INSTANSI
---------------------------------------------------------- */
+========================================================= */
 
 .agency-cell {
+
     vertical-align: middle;
 
     text-align: center;
@@ -182,43 +224,47 @@ body {
 
 
 .agency-government {
+
     font-size: 14pt;
 
     font-weight: bold;
 
-    line-height: 1.2;
+    line-height: 1.18;
 
     text-transform: uppercase;
 }
 
 
 .agency-name {
+
     margin-top: 2px;
 
     font-size: 13pt;
 
     font-weight: bold;
 
-    line-height: 1.25;
+    line-height: 1.20;
 
     text-transform: uppercase;
 }
 
 
 .agency-address {
-    margin-top: 4px;
+
+    margin-top: 3px;
 
     font-size: 10.5pt;
 
-    line-height: 1.3;
+    line-height: 1.25;
 }
 
 
 .agency-contact,
 .agency-email {
+
     font-size: 10pt;
 
-    line-height: 1.3;
+    line-height: 1.25;
 }
 
 
@@ -227,11 +273,13 @@ body {
 ========================================================= */
 
 .letterhead-line {
+
     width: 100%;
 
-    margin-top: 3mm;
+    margin-top: 4mm;
 
-    border-top: 1px solid #222;
+    border-top:
+        1px solid #222;
 }
 
 
@@ -240,13 +288,14 @@ body {
 ========================================================= */
 
 .document-heading {
-    margin-top: 5mm;
+
+    margin-top: 4mm;
 
     text-align: center;
 
     font-size: 10.5pt;
 
-    line-height: 1.35;
+    line-height: 1.30;
 
     font-weight: bold;
 
@@ -255,28 +304,31 @@ body {
 
 
 .document-heading .recommendation-title {
-    margin-top: 1.5mm;
+
+    margin-top: 1mm;
 
     font-size: 11.5pt;
 }
 
 
 /* =========================================================
-   IDENTITAS SURAT
+   INFORMASI SURAT
 ========================================================= */
 
 .letter-info {
-    margin-top: 7mm;
+
+    margin-top: 5mm;
 
     width: 100%;
 
-    font-size: 11.5pt;
+    font-size: 11pt;
 
-    line-height: 1.55;
+    line-height: 1.40;
 }
 
 
 .letter-info-table {
+
     width: 100%;
 
     border-collapse: collapse;
@@ -284,18 +336,21 @@ body {
 
 
 .letter-info-table td {
+
     vertical-align: top;
 
-    padding-bottom: 1.5mm;
+    padding-bottom: 1mm;
 }
 
 
 .info-label {
+
     width: 27mm;
 }
 
 
 .info-colon {
+
     width: 6mm;
 
     text-align: center;
@@ -303,33 +358,37 @@ body {
 
 
 .info-value {
+
     text-align: left;
 }
 
 
 .letter-date {
-    margin-top: 2mm;
+
+    margin-top: 1mm;
 
     text-align: right;
 
-    font-size: 11.5pt;
+    font-size: 11pt;
 }
 
 
 /* =========================================================
-   TUJUAN SURAT
+   TUJUAN
 ========================================================= */
 
 .recipient {
-    margin-top: 6mm;
 
-    font-size: 11.5pt;
+    margin-top: 4mm;
 
-    line-height: 1.55;
+    font-size: 11pt;
+
+    line-height: 1.40;
 }
 
 
 .recipient .name {
+
     margin-top: 1mm;
 
     font-weight: bold;
@@ -337,26 +396,29 @@ body {
 
 
 .recipient .location {
+
     margin-top: 1mm;
 }
 
 
 /* =========================================================
-   ISI
+   ISI SURAT
 ========================================================= */
 
 .content {
+
     margin-top: 4mm;
 
-    font-size: 11.5pt;
+    font-size: 11pt;
 
-    line-height: 1.55;
+    line-height: 1.43;
 
     text-align: justify;
 }
 
 
 .content p {
+
     margin:
         0 0 3mm;
 }
@@ -367,10 +429,12 @@ body {
 ========================================================= */
 
 .section-title {
-    margin-top: 3mm;
+
+    margin-top: 2.5mm;
+
     margin-bottom: 1mm;
 
-    font-size: 11.5pt;
+    font-size: 11pt;
 
     font-weight: bold;
 
@@ -379,38 +443,41 @@ body {
 
 
 /* =========================================================
-   DATA PEMOHON / DATA LOKASI
+   DATA TABLE
 ========================================================= */
 
 .data-table {
+
     width: 100%;
 
     border-collapse: collapse;
 
     margin:
-        0 0 4mm;
+        0 0 2.5mm;
 
-    font-size: 11.5pt;
+    font-size: 11pt;
 
-    line-height: 1.4;
+    line-height: 1.30;
 }
 
 
 .data-table td {
+
     vertical-align: top;
 
     padding:
-        .8mm
-        1mm;
+        .55mm 1mm;
 }
 
 
 .data-table .label {
+
     width: 43mm;
 }
 
 
 .data-table .colon {
+
     width: 6mm;
 
     text-align: center;
@@ -418,6 +485,7 @@ body {
 
 
 .data-table .value {
+
     text-align: left;
 }
 
@@ -427,27 +495,31 @@ body {
 ========================================================= */
 
 .consideration {
+
     width: 100%;
 
     border-collapse: collapse;
 
-    margin-bottom: 4mm;
+    margin:
+        0;
 
-    font-size: 11.5pt;
+    font-size: 11pt;
 
-    line-height: 1.5;
+    line-height: 1.38;
 }
 
 
 .consideration td {
+
     vertical-align: top;
 
     padding:
-        .8mm 0;
+        .7mm 0;
 }
 
 
 .consideration .number {
+
     width: 8mm;
 
     padding-left: 1mm;
@@ -455,7 +527,18 @@ body {
 
 
 .consideration .text {
+
     text-align: justify;
+}
+
+
+/* =========================================================
+   HALAMAN 2
+========================================================= */
+
+.page-two-content {
+
+    margin-top: 1mm;
 }
 
 
@@ -464,18 +547,21 @@ body {
 ========================================================= */
 
 .note {
+
     margin-top: 4mm;
+
     margin-bottom: 4mm;
 
     font-size: 11pt;
 
-    line-height: 1.5;
+    line-height: 1.45;
 
     text-align: justify;
 }
 
 
 .note-title {
+
     margin-bottom: 1mm;
 
     font-weight: bold;
@@ -487,11 +573,12 @@ body {
 ========================================================= */
 
 .closing {
+
     margin-top: 4mm;
 
-    font-size: 11.5pt;
+    font-size: 11pt;
 
-    line-height: 1.55;
+    line-height: 1.45;
 
     text-align: justify;
 }
@@ -502,24 +589,27 @@ body {
 ========================================================= */
 
 .signature {
+
     width: 100%;
 
     margin-top: 9mm;
 
     text-align: right;
 
-    font-size: 11.5pt;
+    font-size: 11pt;
 
-    line-height: 1.5;
+    line-height: 1.45;
 }
 
 
 .signature-space {
+
     height: 24mm;
 }
 
 
 .signature-name {
+
     font-weight: bold;
 
     text-decoration: underline;
@@ -531,15 +621,17 @@ body {
 ========================================================= */
 
 .copy {
+
     margin-top: 8mm;
 
     font-size: 10.5pt;
 
-    line-height: 1.5;
+    line-height: 1.45;
 }
 
 
 .copy-title {
+
     margin-bottom: 1mm;
 
     font-weight: bold;
@@ -547,6 +639,7 @@ body {
 
 
 .copy ol {
+
     margin:
         0 0 0 6mm;
 
@@ -559,9 +652,11 @@ body {
 ========================================================= */
 
 .page-number {
+
     position: absolute;
 
     right: 0;
+
     bottom: 0;
 
     min-width: 15mm;
@@ -571,6 +666,7 @@ body {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     padding:
@@ -578,9 +674,12 @@ body {
 
     background: #333;
 
-    color: white;
+    color: #fff;
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
     font-size: 11pt;
 
@@ -589,11 +688,13 @@ body {
 
 
 /* =========================================================
-   PRINT
+   PRINT A4
 ========================================================= */
 
 @page {
+
     size: A4;
+
     margin: 0;
 }
 
@@ -602,28 +703,44 @@ body {
 
     html,
     body {
+
         margin: 0;
+
         padding: 0;
 
-        background: white;
+        background: #fff;
     }
 
+
     .toolbar {
+
         display: none !important;
     }
 
+
     .document-viewer {
+
         display: block;
 
-        padding: 0;
         margin: 0;
+
+        padding: 0;
     }
 
+
     .page {
+
         width: 210mm;
+
         height: 297mm;
 
         margin: 0;
+
+        padding:
+            16mm
+            20mm
+            20mm
+            25mm;
 
         box-shadow: none;
 
@@ -639,16 +756,22 @@ body {
 @media screen and (max-width: 800px) {
 
     body {
+
         background: #ccc;
     }
 
+
     .document-viewer {
+
         padding:
             10px 0 30px;
     }
 
+
     .page {
+
         width: 100%;
+
         height: auto;
 
         min-height: 141.4vw;
@@ -656,45 +779,65 @@ body {
         padding:
             22px
             18px
-            50px;
+            48px;
 
         box-shadow:
-            0 1px 5px rgba(0,0,0,.25);
+            0 1px 5px
+            rgba(0,0,0,.25);
+
+        overflow: visible;
     }
 
+
     .logo-cell {
+
         width: 70px;
 
         padding-left: 5px;
+
         padding-right: 3px;
     }
 
+
     .logo-cell img {
+
         width: 55px;
+
         height: 55px;
     }
 
+
     .agency-government {
+
         font-size: 10px;
     }
 
+
     .agency-name {
+
         font-size: 9.5px;
     }
+
 
     .agency-address,
     .agency-contact,
     .agency-email {
+
         font-size: 7.5px;
     }
 
+
     .document-heading {
+
         font-size: 9px;
     }
 
+
     .document-heading .recommendation-title {
+
         font-size: 10px;
     }
+
 
     .letter-info,
     .letter-date,
@@ -703,15 +846,21 @@ body {
     .data-table,
     .consideration,
     .closing {
+
         font-size: 10px;
     }
+
 
     .signature {
+
         font-size: 10px;
     }
 
+
     .page-number {
+
         height: 30px;
+
         min-width: 45px;
 
         font-size: 10px;
@@ -733,7 +882,7 @@ body {
 <div class="toolbar">
 
     <button onclick="window.print()">
-        🖨 Cetak
+        🖨 Cetak A4
     </button>
 
 </div>
@@ -747,12 +896,17 @@ body {
 <main class="document-viewer">
 
 
+
 <!-- =========================================================
      HALAMAN 1
 ========================================================= -->
 
 <section class="page">
 
+
+<!-- =====================================================
+     KOP SURAT
+====================================================== -->
 
 <header class="letterhead">
 
@@ -761,10 +915,6 @@ body {
 
 <tr>
 
-
-<!-- =====================================================
-     LOGO KABUPATEN PASURUAN
-====================================================== -->
 
 <td class="logo-cell">
 
@@ -776,33 +926,35 @@ alt="Logo Kabupaten Pasuruan"
 </td>
 
 
-<!-- =====================================================
-     IDENTITAS INSTANSI
-====================================================== -->
-
 <td class="agency-cell">
+
 
 <div class="agency-government">
 PEMERINTAH KABUPATEN PASURUAN
 </div>
 
+
 <div class="agency-name">
 DINAS PENANAMAN MODAL DAN PELAYANAN TERPADU SATU PINTU
 </div>
+
 
 <div class="agency-address">
 Komplek Perkantoran Pemerintah Kabupaten Pasuruan
 </div>
 
+
 <div class="agency-contact">
 Jalan Raya Raci Km.9-Pasuruan 67153 Telp. (0343) 4505657
 </div>
 
+
 <div class="agency-email">
-Pos-el : dpmptsp.pasuruankab.go.id
+Website : dpmptsp.pasuruankab.go.id
 &nbsp;&nbsp;&nbsp;
 e-mail : dpmptsp@pasuruankab.go.id
 </div>
+
 
 </td>
 
@@ -814,23 +966,28 @@ e-mail : dpmptsp@pasuruankab.go.id
 <div class="letterhead-line"></div>
 
 
+
 <!-- =====================================================
-     JUDUL TEPAT DI BAWAH GARIS
+     JUDUL
 ====================================================== -->
 
 <div class="document-heading">
+
 
 <div>
 KEPUTUSAN KEPALA DINAS PENANAMAN MODAL DAN
 </div>
 
+
 <div>
 PELAYANAN TERPADU SATU PINTU KABUPATEN PASURUAN
 </div>
 
+
 <div class="recommendation-title">
 SURAT REKOMENDASI
 </div>
+
 
 </div>
 
@@ -840,12 +997,14 @@ SURAT REKOMENDASI
 
 
 <!-- =====================================================
-     NOMOR / LAMPIRAN / PERIHAL
+     INFORMASI SURAT
 ====================================================== -->
 
 <section class="letter-info">
 
+
 <table class="letter-info-table">
+
 
 <tr>
 
@@ -892,19 +1051,23 @@ Perihal
 </td>
 
 <td class="info-value">
+
 <strong>
 Rekomendasi Izin Penggunaan Lahan Pemakaman Khusus TiongHoa.
 </strong>
+
 </td>
 
 </tr>
+
 
 </table>
 
 
 <div class="letter-date">
-<!---Bangil, 27 Agustus 2026--->
+Bangil, 27 Agustus 2026
 </div>
+
 
 </section>
 
@@ -916,28 +1079,33 @@ Rekomendasi Izin Penggunaan Lahan Pemakaman Khusus TiongHoa.
 
 <section class="recipient">
 
+
 <div>
 Kepada Yth.
 </div>
+
 
 <div class="name">
 Bupati Pasuruan
 </div>
 
+
 <div>
 c.q. Kepala DPMPTSP
 </div>
 
+
 <div class="location">
 di kab. Pasuruan
 </div>
+
 
 </section>
 
 
 
 <!-- =====================================================
-     ISI SURAT
+     ISI
 ====================================================== -->
 
 <section class="content">
@@ -949,15 +1117,18 @@ Dengan hormat,
 
 
 <p>
-Sehubungan dengan surat permohonan PT. HARMONY EVERLASTING
-GARDEN tanggal 27 Agustus 2026 perihal permohonan rekomendasi penggunaan
-lahan untuk Pemakaman Khusus TiongHoa, dengan ini kami
-sampaikan hal-hal sebagai berikut:
+Sehubungan dengan surat permohonan
+PT. HARMONY EVERLASTING GARDEN tanggal
+27 Agustus 2026 perihal permohonan rekomendasi
+penggunaan lahan untuk Pemakaman Khusus TiongHoa,
+dengan ini kami sampaikan hal-hal sebagai berikut:
 </p>
 
 
 
-<!-- DATA PEMOHON -->
+<!-- =====================================================
+     DATA PEMOHON
+====================================================== -->
 
 <div class="section-title">
 DATA PEMOHON
@@ -965,6 +1136,7 @@ DATA PEMOHON
 
 
 <table class="data-table">
+
 
 <tr>
 
@@ -1033,11 +1205,14 @@ NIK
 
 </tr>
 
+
 </table>
 
 
 
-<!-- DATA LOKASI -->
+<!-- =====================================================
+     DATA LOKASI
+====================================================== -->
 
 <div class="section-title">
 DATA LOKASI
@@ -1045,6 +1220,7 @@ DATA LOKASI
 
 
 <table class="data-table">
+
 
 <tr>
 
@@ -1113,11 +1289,14 @@ AJB/ VIII/ 2026
 
 </tr>
 
+
 </table>
 
 
 
-<!-- PERTIMBANGAN -->
+<!-- =====================================================
+     PERTIMBANGAN
+====================================================== -->
 
 <div class="section-title">
 PERTIMBANGAN
@@ -1125,6 +1304,7 @@ PERTIMBANGAN
 
 
 <table class="consideration">
+
 
 <tr>
 
@@ -1134,8 +1314,9 @@ PERTIMBANGAN
 
 <td class="text">
 
-Berdasarkan hasil penelitian administrasi dan peninjauan
-lapangan, lokasi tersebut sesuai untuk peruntukan pemakaman.
+Berdasarkan hasil penelitian administrasi dan
+peninjauan lapangan, lokasi tersebut sesuai untuk
+peruntukan pemakaman.
 
 </td>
 
@@ -1150,8 +1331,8 @@ lapangan, lokasi tersebut sesuai untuk peruntukan pemakaman.
 
 <td class="text">
 
-Telah mendapat dukungan/pernyataan tidak keberatan dari
-Pemerintah Desa Jatisari dan Kecamatan Purwodadi.
+Telah mendapat dukungan/pernyataan tidak keberatan
+dari Pemerintah Desa Jatisari dan Kecamatan Purwodadi.
 
 </td>
 
@@ -1166,13 +1347,14 @@ Pemerintah Desa Jatisari dan Kecamatan Purwodadi.
 
 <td class="text">
 
-Pengelolaan akan dilakukan sesuai ketentuan peraturan
-perundang-undangan, norma agama, adat istiadat, dan tidak
-mengganggu lingkungan.
+Pengelolaan akan dilakukan sesuai ketentuan
+peraturan perundang-undangan, norma agama,
+adat istiadat, dan tidak mengganggu lingkungan.
 
 </td>
 
 </tr>
+
 
 </table>
 
@@ -1181,19 +1363,13 @@ mengganggu lingkungan.
 
 
 
-<!-- NOMOR HALAMAN -->
+<!-- =====================================================
+     NOMOR HALAMAN
+====================================================== -->
 
 <div class="page-number">
 
-<span class="current-page">
-1
-</span>
-
-/
-
-<span class="total-page">
-2
-</span>
+1 / 2
 
 </div>
 
@@ -1204,75 +1380,20 @@ mengganggu lingkungan.
 
 <!-- =========================================================
      HALAMAN 2
+     
+     TANPA LOGO
+     TANPA KOP
 ========================================================= -->
 
 <section class="page">
 
 
-<!-- =====================================================
-     KOP HALAMAN 2
-====================================================== -->
-
-<header class="letterhead">
-
-<table class="letterhead-table">
-
-<tr>
-
-
-<td class="logo-cell">
-
-<img
-src="https://i.ibb.co.com/7JjVGx8V/Logo-Kabupaten-Pasuruan-Free-Download-Logo-Format-PNG-Logo-PNG-Logo-Keren.jpg"
-alt="Logo Kabupaten Pasuruan"
->
-
-</td>
-
-
-<td class="agency-cell">
-
-<div class="agency-government">
-PEMERINTAH KABUPATEN PASURUAN
-</div>
-
-<div class="agency-name">
-DINAS PENANAMAN MODAL DAN PELAYANAN TERPADU SATU PINTU
-</div>
-
-<div class="agency-address">
-Komplek Perkantoran Pemerintah Kabupaten Pasuruan
-</div>
-
-<div class="agency-contact">
-Jalan Raya Raci Km.9-Pasuruan 67153 Telp. (0343) 4505657
-</div>
-
-<div class="agency-email">
-Website : dpmptsp.pasuruankab.go.id
-&nbsp;&nbsp;&nbsp;
-e-mail : dpmptsp@pasuruankab.go.id
-</div>
-
-</td>
-
-</tr>
-
-</table>
-
-
-<div class="letterhead-line"></div>
-
-</header>
-
+<section class="content page-two-content">
 
 
 <!-- =====================================================
-     LANJUTAN ISI
+     REKOMENDASI
 ====================================================== -->
-
-<section class="content">
-
 
 <p>
 
@@ -1285,33 +1406,42 @@ ketentuan yang berlaku.
 
 
 
-<!-- CATATAN -->
+<!-- =====================================================
+     CATATAN
+====================================================== -->
 
 <div class="note">
+
 
 <div class="note-title">
 Catatan:
 </div>
 
+
 Rekomendasi ini bukan merupakan izin. Pemohon wajib
 melengkapi izin teknis dari instansi terkait: DLH,
 Dinas Perkim, BPN, dan ketentuan lainnya.
+
 
 </div>
 
 
 
-<!-- PENUTUP -->
+<!-- =====================================================
+     PENUTUP
+====================================================== -->
 
 <div class="closing">
 
+
 <p>
 
-Demikian rekomendasi ini kami buat untuk dapat dipergunakan
-sebagaimana mestinya. Atas perhatiannya kami ucapkan
-terima kasih.
+Demikian rekomendasi ini kami buat untuk dapat
+dipergunakan sebagaimana mestinya. Atas perhatiannya
+kami ucapkan terima kasih.
 
 </p>
+
 
 </div>
 
@@ -1323,6 +1453,7 @@ terima kasih.
 
 <div class="signature">
 
+
 <div>
 Pasuruan,……………./……………./…….
 </div>
@@ -1332,8 +1463,9 @@ Pasuruan,……………./……………./…….
 
 
 <div class="signature-name">
-<!---........................................--->
+........................................
 </div>
+
 
 </div>
 
@@ -1344,6 +1476,7 @@ Pasuruan,……………./……………./…….
 ====================================================== -->
 
 <div class="copy">
+
 
 <div class="copy-title">
 Tembusan*
@@ -1362,6 +1495,7 @@ Arsip
 
 </ol>
 
+
 </div>
 
 
@@ -1369,19 +1503,13 @@ Arsip
 
 
 
-<!-- NOMOR HALAMAN -->
+<!-- =====================================================
+     NOMOR HALAMAN
+====================================================== -->
 
 <div class="page-number">
 
-<span class="current-page">
-2
-</span>
-
-/
-
-<span class="total-page">
-2
-</span>
+2 / 2
 
 </div>
 
