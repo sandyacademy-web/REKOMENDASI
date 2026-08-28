@@ -1,761 +1,1397 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Surat Rekomendasi - PT. Harmony Everlasting Garden</title>
+<title>Surat Rekomendasi - DPMPTSP Kabupaten Pasuruan</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<style>
 
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            background: #e5e5e5;
-            font-family: "Times New Roman", Times, serif;
-            color: #000;
-        }
+/* =========================================================
+   RESET
+========================================================= */
 
-        body {
-            padding: 30px 0;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        /* =========================
-           KERTAS A4
-        ========================= */
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
 
-        .paper {
-            width: 210mm;
-            min-height: 297mm;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20mm 20mm 18mm 25mm;
-            box-shadow: 0 0 12px rgba(0, 0, 0, 0.20);
-        }
+body {
+    background: #d2d2d2;
+    color: #111;
+    font-family: "Times New Roman", Times, serif;
+}
 
-        /* =========================
-           KOP SURAT
-        ========================= */
 
-        .kop {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #000;
-            position: relative;
-        }
+/* =========================================================
+   TOOLBAR
+========================================================= */
 
-        .kop::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: -7px;
-            height: 1px;
-            background: #000;
-        }
+.toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
 
-        .logo-wrapper {
-            width: 85px;
-            min-width: 85px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    width: 100%;
+    padding: 10px;
 
-        .logo-wrapper img {
-            width: 72px;
-            height: auto;
-            display: block;
-        }
+    display: flex;
+    justify-content: center;
+    gap: 8px;
 
-        .kop-text {
-            flex: 1;
-            text-align: center;
-            line-height: 1.15;
-            padding-right: 20px;
-        }
+    background: rgba(30,30,30,.95);
+}
 
-        .kop-text .pemkab {
-            font-size: 16px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
+.toolbar button {
+    border: none;
+    border-radius: 5px;
 
-        .kop-text .dinas {
-            font-size: 15px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
+    padding: 9px 16px;
 
-        .kop-text .alamat {
-            font-size: 10.5px;
-            margin-top: 5px;
-            line-height: 1.3;
-        }
+    background: white;
+    color: #111;
 
-        /* =========================
-           JUDUL
-        ========================= */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
 
-        .judul {
-            text-align: center;
-            margin-top: 28px;
-            margin-bottom: 20px;
-        }
+    cursor: pointer;
+}
 
-        .judul h1 {
-            margin: 0;
-            font-size: 15px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
+.toolbar button:hover {
+    background: #ddd;
+}
 
-        .judul h2 {
-            margin: 7px 0 0;
-            font-size: 16px;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-decoration: underline;
-        }
 
-        /* =========================
-           NOMOR SURAT
-        ========================= */
+/* =========================================================
+   DOCUMENT VIEWER
+========================================================= */
 
-        .metadata {
-            width: 100%;
-            margin-bottom: 18px;
-            font-size: 12px;
-            line-height: 1.45;
-        }
+.document-viewer {
+    width: 100%;
 
-        .metadata-row {
-            display: flex;
-        }
+    padding: 20px 0 40px;
 
-        .metadata-label {
-            width: 78px;
-        }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-        .metadata-separator {
-            width: 12px;
-        }
+    gap: 20px;
+}
 
-        .metadata-value {
-            flex: 1;
-        }
 
-        /* =========================
-           ISI SURAT
-        ========================= */
+/* =========================================================
+   A4 PAGE
+========================================================= */
 
-        .content {
-            font-size: 12px;
-            line-height: 1.5;
-            text-align: justify;
-        }
+.page {
+    position: relative;
 
-        .date {
-            text-align: right;
-            margin-bottom: 18px;
-        }
+    width: 210mm;
+    height: 297mm;
 
-        .recipient {
-            margin-bottom: 18px;
-        }
+    background: #fff;
 
-        .recipient p {
-            margin: 0;
-        }
+    padding:
+        17mm
+        20mm
+        20mm
+        25mm;
 
-        .section-title {
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-top: 14px;
-            margin-bottom: 6px;
-        }
+    box-shadow:
+        0 2px 10px rgba(0,0,0,.30);
 
-        p {
-            margin: 0 0 8px 0;
-        }
+    overflow: hidden;
 
-        /* =========================
-           DATA TABLE
-        ========================= */
+    page-break-after: always;
+    break-after: page;
+}
 
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 4px 0 10px;
-            font-size: 12px;
-        }
+.page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+}
 
-        .data-table td {
-            padding: 2px 4px;
-            vertical-align: top;
-        }
 
-        .data-table .label {
-            width: 160px;
-        }
+/* =========================================================
+   KOP SURAT
+========================================================= */
 
-        .data-table .separator {
-            width: 15px;
-        }
+.letterhead {
+    width: 100%;
+}
 
-        /* =========================
-           PERTIMBANGAN
-        ========================= */
 
-        .pertimbangan {
-            margin-top: 4px;
-        }
+/* ---------------------------------------------------------
+   TABEL KOP
+--------------------------------------------------------- */
 
-        .pertimbangan-item {
-            display: flex;
-            text-align: justify;
-            margin-bottom: 5px;
-        }
+.letterhead-table {
+    width: 100%;
 
-        .pertimbangan-number {
-            width: 24px;
-            min-width: 24px;
-        }
+    border-collapse: collapse;
 
-        .pertimbangan-text {
-            flex: 1;
-        }
+    table-layout: fixed;
+}
 
-        /* =========================
-           CATATAN
-        ========================= */
 
-        .catatan {
-            margin-top: 12px;
-            margin-bottom: 12px;
-        }
+/* ---------------------------------------------------------
+   LOGO
+--------------------------------------------------------- */
 
-        .catatan-title {
-            font-weight: bold;
-            margin-bottom: 3px;
-        }
+.logo-cell {
+    width: 39mm;
 
-    /* =========================
+    vertical-align: middle;
+
+    text-align: center;
+
+    padding-left: 5mm;
+    padding-right: 3mm;
+}
+
+.logo-cell img {
+    display: block;
+
+    width: 34mm;
+    height: 34mm;
+
+    object-fit: contain;
+
+    margin: 0 auto;
+}
+
+
+/* ---------------------------------------------------------
+   TEKS INSTANSI
+--------------------------------------------------------- */
+
+.agency-cell {
+    vertical-align: middle;
+
+    text-align: center;
+
+    padding-left: 1mm;
+}
+
+
+.agency-government {
+    font-size: 14pt;
+
+    font-weight: bold;
+
+    line-height: 1.2;
+
+    text-transform: uppercase;
+}
+
+
+.agency-name {
+    margin-top: 2px;
+
+    font-size: 13pt;
+
+    font-weight: bold;
+
+    line-height: 1.25;
+
+    text-transform: uppercase;
+}
+
+
+.agency-address {
+    margin-top: 4px;
+
+    font-size: 10.5pt;
+
+    line-height: 1.3;
+}
+
+
+.agency-contact,
+.agency-email {
+    font-size: 10pt;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   GARIS HORIZONTAL
+========================================================= */
+
+.letterhead-line {
+    width: 100%;
+
+    margin-top: 5mm;
+
+    border-top: 1px solid #222;
+}
+
+
+/* =========================================================
+   JUDUL SURAT
+========================================================= */
+
+.document-heading {
+    margin-top: 5mm;
+
+    text-align: center;
+
+    font-size: 10.5pt;
+
+    line-height: 1.35;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+}
+
+
+.document-heading .recommendation-title {
+    margin-top: 1.5mm;
+
+    font-size: 11.5pt;
+}
+
+
+/* =========================================================
+   IDENTITAS SURAT
+========================================================= */
+
+.letter-info {
+    margin-top: 7mm;
+
+    width: 100%;
+
+    font-size: 11.5pt;
+
+    line-height: 1.55;
+}
+
+
+.letter-info-table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+.letter-info-table td {
+    vertical-align: top;
+
+    padding-bottom: 1.5mm;
+}
+
+
+.info-label {
+    width: 27mm;
+}
+
+
+.info-colon {
+    width: 6mm;
+
+    text-align: center;
+}
+
+
+.info-value {
+    text-align: left;
+}
+
+
+.letter-date {
+    margin-top: 2mm;
+
+    text-align: right;
+
+    font-size: 11.5pt;
+}
+
+
+/* =========================================================
+   TUJUAN SURAT
+========================================================= */
+
+.recipient {
+    margin-top: 6mm;
+
+    font-size: 11.5pt;
+
+    line-height: 1.55;
+}
+
+
+.recipient .name {
+    margin-top: 1mm;
+
+    font-weight: bold;
+}
+
+
+.recipient .location {
+    margin-top: 1mm;
+}
+
+
+/* =========================================================
+   ISI
+========================================================= */
+
+.content {
+    margin-top: 6mm;
+
+    font-size: 11.5pt;
+
+    line-height: 1.55;
+
+    text-align: justify;
+}
+
+
+.content p {
+    margin:
+        0 0 4mm;
+}
+
+
+/* =========================================================
+   JUDUL BAGIAN
+========================================================= */
+
+.section-title {
+    margin-top: 3mm;
+    margin-bottom: 1mm;
+
+    font-size: 11.5pt;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   DATA PEMOHON / DATA LOKASI
+========================================================= */
+
+.data-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin:
+        0 0 4mm;
+
+    font-size: 11.5pt;
+
+    line-height: 1.4;
+}
+
+
+.data-table td {
+    vertical-align: top;
+
+    padding:
+        .8mm
+        1mm;
+}
+
+
+.data-table .label {
+    width: 43mm;
+}
+
+
+.data-table .colon {
+    width: 6mm;
+
+    text-align: center;
+}
+
+
+.data-table .value {
+    text-align: left;
+}
+
+
+/* =========================================================
+   PERTIMBANGAN
+========================================================= */
+
+.consideration {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin-bottom: 4mm;
+
+    font-size: 11.5pt;
+
+    line-height: 1.5;
+}
+
+
+.consideration td {
+    vertical-align: top;
+
+    padding:
+        .8mm 0;
+}
+
+
+.consideration .number {
+    width: 8mm;
+
+    padding-left: 1mm;
+}
+
+
+.consideration .text {
+    text-align: justify;
+}
+
+
+/* =========================================================
+   CATATAN
+========================================================= */
+
+.note {
+    margin-top: 4mm;
+    margin-bottom: 4mm;
+
+    font-size: 11pt;
+
+    line-height: 1.5;
+
+    text-align: justify;
+}
+
+
+.note-title {
+    margin-bottom: 1mm;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   PENUTUP
+========================================================= */
+
+.closing {
+    margin-top: 4mm;
+
+    font-size: 11.5pt;
+
+    line-height: 1.55;
+
+    text-align: justify;
+}
+
+
+/* =========================================================
    TANDA TANGAN
-    ========================= */
+========================================================= */
 
 .signature {
     width: 100%;
-    margin-top: 28px;
+
+    margin-top: 9mm;
+
+    text-align: right;
+
+    font-size: 11.5pt;
+
+    line-height: 1.5;
 }
 
-.signature-box {
-    width: 245px;
-    margin-left: auto;
-    text-align: center;
-    line-height: 1.4;
-    position: relative;
-}
 
-/* Area tanda tangan */
 .signature-space {
-    height: 105px;
-    position: relative;
+    height: 24mm;
 }
 
-/* Placeholder stempel */
-.stamp-placeholder {
+
+.signature-name {
+    font-weight: bold;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   TEMBUSAN
+========================================================= */
+
+.copy {
+    margin-top: 8mm;
+
+    font-size: 10.5pt;
+
+    line-height: 1.5;
+}
+
+
+.copy-title {
+    margin-bottom: 1mm;
+
+    font-weight: bold;
+}
+
+
+.copy ol {
+    margin:
+        0 0 0 6mm;
+
+    padding-left: 5mm;
+}
+
+
+/* =========================================================
+   NOMOR HALAMAN
+========================================================= */
+
+.page-number {
     position: absolute;
-    width: 72px;
-    height: 72px;
-    border: 2px dashed #777;
-    border-radius: 50%;
-    left: 18px;
-    bottom: 8px;
+
+    right: 0;
+    bottom: 0;
+
+    min-width: 15mm;
+
+    height: 9mm;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    font-family: "Times New Roman", Times, serif;
-    font-size: 8px;
-    line-height: 1.1;
-    text-align: center;
-    color: #777;
-    transform: rotate(-8deg);
-}
+    padding:
+        1mm 3mm;
 
-/* Tanda tangan */
-.signature-name {
+    background: #333;
+
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 11pt;
+
     font-weight: bold;
-    text-decoration: underline;
-    margin-top: 2px;
 }
 
-/* Keterangan jabatan */
-.signature-position {
-    margin-top: 2px;
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@page {
+    size: A4;
+    margin: 0;
 }
 
-        /* =========================
-           TEMBUSAN
-        ========================= */
 
-        .tembusan {
-            margin-top: 20px;
-            font-size: 11.5px;
-            line-height: 1.5;
-        }
+@media print {
 
-        .tembusan-title {
-            font-weight: bold;
-        }
+    html,
+    body {
+        margin: 0;
+        padding: 0;
 
-        /* =========================
-           FOOTER
-        ========================= */
+        background: white;
+    }
 
-        .document-note {
-            margin-top: 18px;
-            text-align: center;
-            font-size: 8px;
-            color: #666;
-            display: none;
-        }
+    .toolbar {
+        display: none !important;
+    }
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
+    .document-viewer {
+        display: block;
 
-        @media screen and (max-width: 800px) {
-            body {
-                padding: 0;
-                background: #fff;
-            }
+        padding: 0;
+        margin: 0;
+    }
 
-            .paper {
-                width: 100%;
-                min-height: auto;
-                padding: 18px 20px;
-                box-shadow: none;
-            }
+    .page {
+        width: 210mm;
+        height: 297mm;
 
-            .kop-text .pemkab {
-                font-size: 13px;
-            }
+        margin: 0;
 
-            .kop-text .dinas {
-                font-size: 12px;
-            }
+        box-shadow: none;
 
-            .kop-text .alamat {
-                font-size: 8px;
-            }
+        overflow: hidden;
+    }
+}
 
-            .logo-wrapper {
-                width: 65px;
-                min-width: 65px;
-            }
 
-            .logo-wrapper img {
-                width: 58px;
-            }
+/* =========================================================
+   MOBILE
+========================================================= */
 
-            .content,
-            .metadata,
-            .data-table {
-                font-size: 11px;
-            }
+@media screen and (max-width: 800px) {
 
-            .data-table .label {
-                width: 125px;
-            }
-        }
+    body {
+        background: #ccc;
+    }
 
-        /* =========================
-           PRINT
-        ========================= */
+    .document-viewer {
+        padding:
+            10px 0 30px;
+    }
 
-        @page {
-            size: A4;
-            margin: 0;
-        }
+    .page {
+        width: 100%;
+        height: auto;
 
-        @media print {
-            html,
-            body {
-                background: #fff;
-                margin: 0;
-                padding: 0;
-            }
+        min-height: 141.4vw;
 
-            .paper {
-                width: 210mm;
-                min-height: 297mm;
-                margin: 0;
-                padding: 20mm 20mm 18mm 25mm;
-                box-shadow: none;
-            }
+        padding:
+            22px
+            18px
+            50px;
 
-            .document-note {
-                display: none;
-            }
-        }
-    </style>
+        box-shadow:
+            0 1px 5px rgba(0,0,0,.25);
+    }
+
+    .logo-cell {
+        width: 70px;
+
+        padding-left: 5px;
+        padding-right: 3px;
+    }
+
+    .logo-cell img {
+        width: 55px;
+        height: 55px;
+    }
+
+    .agency-government {
+        font-size: 10px;
+    }
+
+    .agency-name {
+        font-size: 9.5px;
+    }
+
+    .agency-address,
+    .agency-contact,
+    .agency-email {
+        font-size: 7.5px;
+    }
+
+    .document-heading {
+        font-size: 9px;
+    }
+
+    .document-heading .recommendation-title {
+        font-size: 10px;
+    }
+
+    .letter-info,
+    .letter-date,
+    .recipient,
+    .content,
+    .data-table,
+    .consideration,
+    .closing {
+        font-size: 10px;
+    }
+
+    .signature {
+        font-size: 10px;
+    }
+
+    .page-number {
+        height: 30px;
+        min-width: 45px;
+
+        font-size: 10px;
+    }
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-    <main class="paper">
 
-        <!-- =====================================
-             KOP SURAT
-        ====================================== -->
+<!-- =========================================================
+     TOOLBAR
+========================================================= -->
 
-        <header class="kop">
+<div class="toolbar">
 
-            <div class="logo-wrapper">
+    <button onclick="window.print()">
+        🖨 Cetak
+    </button>
 
-                <!-- Logo Kabupaten Pasuruan -->
-                <img
-                    src="https://i.ibb.co.com/7JjVGx8V/Logo-Kabupaten-Pasuruan-Free-Download-Logo-Format-PNG-Logo-PNG-Logo-Keren.jpg"
-                    alt="Logo Kabupaten Pasuruan"
-                >
+</div>
 
-            </div>
 
-            <div class="kop-text">
 
-                <div class="pemkab">
-                    PEMERINTAH KABUPATEN PASURUAN
-                </div>
+<!-- =========================================================
+     DOKUMEN
+========================================================= -->
 
-                <div class="dinas">
-                    DINAS PENANAMAN MODAL DAN
-                    PELAYANAN TERPADU SATU PINTU
-                </div>
+<main class="document-viewer">
 
-                <div class="alamat">
-                    Komplek Perkantoran Pemerintah
-                            Kabupaten Pasuruan
-                                Jalan Raya Raci Km.9-Pasuruan 67153
-                                Telp. (0343) 4505657
-                                    Pos-el :
-                                dpmptsp.pasuruankab.go.id
-                </div>
-                
-                
-                
 
-            </div>
+<!-- =========================================================
+     HALAMAN 1
+========================================================= -->
 
-        </header>
+<section class="page">
 
 
-        <!-- =====================================
-             JUDUL DOKUMEN
-        ====================================== -->
+<header class="letterhead">
 
-        <section class="judul">
 
-            <div>KEPUTUSAN KEPALA DINAS PENANAMAN MODAL DAN</div>
+<table class="letterhead-table">
 
-            <div>PELAYANAN TERPADU SATU PINTU KABUPATEN PASURUAN</div>
+<tr>
 
-            <h2>SURAT REKOMENDASI</h2>
 
-        </section>
+<!-- =====================================================
+     LOGO KABUPATEN PASURUAN
+====================================================== -->
 
+<td class="logo-cell">
 
-        <!-- =====================================
-             METADATA SURAT
-        ====================================== -->
+<img
+src="https://i.ibb.co.com/7JjVGx8V/Logo-Kabupaten-Pasuruan-Free-Download-Logo-Format-PNG-Logo-PNG-Logo-Keren.jpg"
+alt="Logo Kabupaten Pasuruan"
+>
 
-        <section class="metadata">
+</td>
 
-            <div class="metadata-row">
-                <div class="metadata-label">Nomor</div>
-                <div class="metadata-separator">:</div>
-                <div class="metadata-value">
-                    443.1 /.... /424.101/2026
-                </div>
-            </div>
 
-            <div class="metadata-row">
-                <div class="metadata-label">Lampiran</div>
-                <div class="metadata-separator">:</div>
-                <div class="metadata-value">
-                    1 berkas
-                </div>
-            </div>
+<!-- =====================================================
+     IDENTITAS INSTANSI
+====================================================== -->
 
-            <div class="metadata-row">
-                <div class="metadata-label">Perihal</div>
-                <div class="metadata-separator">:</div>
-                <div class="metadata-value">
-                    Rekomendasi Izin Penggunaan Lahan Pemakaman Khusus TiongHoa.
-                </div>
-            </div>
+<td class="agency-cell">
 
-        </section>
+<div class="agency-government">
+PEMERINTAH KABUPATEN PASURUAN
+</div>
 
+<div class="agency-name">
+DINAS PENANAMAN MODAL DAN PELAYANAN TERPADU SATU PINTU
+</div>
 
-        <!-- =====================================
-             ISI SURAT
-        ====================================== -->
+<div class="agency-address">
+Komplek Perkantoran Pemerintah Kabupaten Pasuruan
+</div>
 
-        <section class="content">
+<div class="agency-contact">
+Jalan Raya Raci Km.9-Pasuruan 67153 Telp. (0343) 4505657
+</div>
 
-            <div class="date">
-                Bangil, 27 Agustus 2026
-            </div>
+<div class="agency-email">
+Website : dpmptsp.pasuruankab.go.id
+&nbsp;&nbsp;&nbsp;
+e-mail : dpmptsp@pasuruankab.go.id
+</div>
 
+</td>
 
-            <div class="recipient">
+</tr>
 
-                <p>Kepada Yth.</p>
+</table>
 
-                <p>Bupati Pasuruan</p>
 
-                <p>c.q. Kepala DPMPTSP</p>
+<div class="letterhead-line"></div>
 
-                <p>di kab. Pasuruan</p>
 
-            </div>
+<!-- =====================================================
+     JUDUL TEPAT DI BAWAH GARIS
+====================================================== -->
 
+<div class="document-heading">
 
-            <p>
-                Dengan hormat,
-            </p>
+<div>
+KEPUTUSAN KEPALA DINAS PENANAMAN MODAL DAN
+</div>
 
-            <p>
-                Sehubungan dengan surat permohonan PT. HARMONY EVERLASTING GARDEN
-                tanggal [...] perihal permohonan rekomendasi penggunaan lahan
-                untuk Pemakaman Khusus TiongHoa, dengan ini kami
-                sampaikan hal-hal sebagai berikut:
-            </p>
+<div>
+PELAYANAN TERPADU SATU PINTU KABUPATEN PASURUAN
+</div>
 
+<div class="recommendation-title">
+SURAT REKOMENDASI
+</div>
 
-            <!-- =====================================
-                 DATA PEMOHON
-            ====================================== -->
+</div>
 
-            <div class="section-title">
-                DATA PEMOHON
-            </div>
 
-            <table class="data-table">
+</header>
 
-                <tr>
-                    <td class="label">Nama Perusahaan</td>
-                    <td class="separator">:</td>
-                    <td>PT. HARMONY EVERLASTING GARDEN</td>
-                </tr>
 
-                <tr>
-                    <td class="label">Penanggung Jawab</td>
-                    <td class="separator">:</td>
-                    <td>Surya Halim Susetyo</td>
-                </tr>
 
-                <tr>
-                    <td class="label">Alamat Kantor</td>
-                    <td class="separator">:</td>
-                    <td>
-                        Sepanjang town house nomor E-1, sidoarjo, JawaTimur
-                    </td>
-                </tr>
+<!-- =====================================================
+     NOMOR / LAMPIRAN / PERIHAL
+====================================================== -->
 
-                <tr>
-                    <td class="label">NIK</td>
-                    <td class="separator">:</td>
-                    <td>3578070306900001</td>
-                </tr>
+<section class="letter-info">
 
-            </table>
+<table class="letter-info-table">
 
+<tr>
 
-            <!-- =====================================
-                 DATA LOKASI
-            ====================================== -->
+<td class="info-label">
+Nomor
+</td>
 
-            <div class="section-title">
-                DATA LOKASI
-            </div>
+<td class="info-colon">
+:
+</td>
 
-            <table class="data-table">
+<td class="info-value">
+443.1 /.... /424.101/2026
+</td>
 
-                <tr>
-                    <td class="label">Jenis Pemakaman</td>
-                    <td class="separator">:</td>
-                    <td>Pemakaman Khusus TiongHoa</td>
-                </tr>
+</tr>
 
-                <tr>
-                    <td class="label">Lokasi</td>
-                    <td class="separator">:</td>
-                    <td>
-                        Desa Jatisari, Kecamatan Purwodadi, Kabupaten Pasuruan
-                    </td>
-                </tr>
 
-                <tr>
-                    <td class="label">Luas Lahan</td>
-                    <td class="separator">:</td>
-                    <td>25 Hektar</td>
-                </tr>
+<tr>
 
-                <tr>
-                    <td class="label">Status Tanah</td>
-                    <td class="separator">:</td>
-                    <td>AJB/ VIII/ 2026</td>
-                </tr>
+<td class="info-label">
+Lampiran
+</td>
 
-            </table>
+<td class="info-colon">
+:
+</td>
 
+<td class="info-value">
+1 berkas
+</td>
 
-            <!-- =====================================
-                 PERTIMBANGAN
-            ====================================== -->
+</tr>
 
-            <div class="section-title">
-                PERTIMBANGAN
-            </div>
 
-            <div class="pertimbangan">
+<tr>
 
-                <div class="pertimbangan-item">
-                    <div class="pertimbangan-number">1.</div>
+<td class="info-label">
+Perihal
+</td>
 
-                    <div class="pertimbangan-text">
-                        Berdasarkan hasil penelitian administrasi dan peninjauan
-                        lapangan, lokasi tersebut sesuai untuk peruntukan
-                        pemakaman.
-                    </div>
-                </div>
+<td class="info-colon">
+:
+</td>
 
+<td class="info-value">
+<strong>
+Rekomendasi Izin Penggunaan Lahan Pemakaman Khusus TiongHoa.
+</strong>
+</td>
 
-                <div class="pertimbangan-item">
-                    <div class="pertimbangan-number">2.</div>
+</tr>
 
-                    <div class="pertimbangan-text">
-                        Telah mendapat dukungan/pernyataan tidak keberatan dari
-                        Pemerintah Desa Jatisari dan Kecamatan Purwodadi.
-                    </div>
-                </div>
+</table>
 
 
-                <div class="pertimbangan-item">
-                    <div class="pertimbangan-number">3.</div>
-
-                    <div class="pertimbangan-text">
-                        Pengelolaan akan dilakukan sesuai ketentuan peraturan
-                        perundang-undangan, norma agama, adat istiadat, dan tidak
-                        mengganggu lingkungan.
-                    </div>
-                </div>
-
-            </div>
-
-
-            <!-- =====================================
-                 REKOMENDASI
-            ====================================== -->
-
-            <p style="margin-top: 12px;">
-                Dengan ini kami merekomendasikan kepada PT. HARMONY EVERLASTING
-                GARDEN untuk dapat ditindaklanjuti proses perizinannya sesuai
-                ketentuan yang berlaku.
-            </p>
-
-
-            <!-- =====================================
-                 CATATAN
-            ====================================== -->
-
-            <div class="catatan">
-
-                <div class="catatan-title">
-                    Catatan:
-                </div>
-
-                <p>
-                    Rekomendasi ini bukan merupakan izin. Pemohon wajib
-                    melengkapi izin teknis dari instansi terkait: DLH, Dinas
-                    Perkim, BPN, dan ketentuan lainnya.
-                </p>
-
-            </div>
-
-
-            <p>
-                Demikian rekomendasi ini kami buat untuk dapat dipergunakan
-                sebagaimana mestinya. Atas perhatiannya kami ucapkan terima
-                kasih.
-            </p>
-
-
-            <!-- =====================================
-                 TANDA TANGAN
-            ====================================== -->
-
-            <section class="signature">
-
-            <div class="signature-box">
-
-                <div>
-                    Pasuruan,……………./……………./…….
-                </div>
-
-                <div class="signature-space">
-
-                    <!-- PLACEHOLDER STEMPEL -->
-                    
-
-                </div>
-
-                <div class="signature-name">
-                    ........................................
-                </div>
-
-                <div class="signature-position">
-                    <!--RIDWAN HARRIS-->
-                </div>
-
-            </div>
+<div class="letter-date">
+Bangil, 27 Agustus 2026
+</div>
 
 </section>
 
 
-            <!-- =====================================
-                 TEMBUSAN
-            ====================================== -->
 
-            <section class="tembusan">
+<!-- =====================================================
+     TUJUAN
+====================================================== -->
 
-                <div class="tembusan-title">
-                    Tembusan*
-                </div>
+<section class="recipient">
 
-                <div>
-                    1. Bupati Pasuruan
-                </div>
+<div>
+Kepada Yth.
+</div>
 
-                <div>
-                    2. Arsip
-                </div>
+<div class="name">
+Bupati Pasuruan
+</div>
 
-            </section>
+<div>
+c.q. Kepala DPMPTSP
+</div>
 
-        </section>
+<div class="location">
+di kab. Pasuruan
+</div>
 
-    </main>
+</section>
+
+
+
+<!-- =====================================================
+     ISI SURAT
+====================================================== -->
+
+<section class="content">
+
+
+<p>
+Dengan hormat,
+</p>
+
+
+<p>
+Sehubungan dengan surat permohonan PT. HARMONY EVERLASTING
+GARDEN tanggal [...] perihal permohonan rekomendasi penggunaan
+lahan untuk Pemakaman Khusus TiongHoa, dengan ini kami
+sampaikan hal-hal sebagai berikut:
+</p>
+
+
+
+<!-- DATA PEMOHON -->
+
+<div class="section-title">
+DATA PEMOHON
+</div>
+
+
+<table class="data-table">
+
+<tr>
+
+<td class="label">
+Nama Perusahaan
+</td>
+
+<td class="colon">
+:
+</td>
+
+<td class="value">
+PT. HARMONY EVERLASTING GARDEN
+</td>
+
+</tr>
+
+
+<tr>
+
+<td class="label">
+Penanggung Jawab
+</td>
+
+<td class="colon">
+:
+</td>
+
+<td class="value">
+Surya Halim Susetyo
+</td>
+
+</tr>
+
+
+<tr>
+
+<td class="label">
+Alamat Kantor
+</td>
+
+<td class="colon">
+:
+</td>
+
+<td class="value">
+Sepanjang town house nomor E-1, sidoarjo, JawaTimur
+</td>
+
+</tr>
+
+
+<tr>
+
+<td class="label">
+NIK
+</td>
+
+<td class="colon">
+:
+</td>
+
+<td class="value">
+3578070306900001
+</td>
+
+</tr>
+
+</table>
+
+
+
+<!-- DATA LOKASI -->
+
+<div class="section-title">
+DATA LOKASI
+</div>
+
+
+<table class="data-table">
+
+<tr>
+
+<td class="label">
+Jenis Pemakaman
+</td>
+
+<td class="colon">
+:
+</td>
+
+<td class="value">
+Pemakaman Khusus TiongHoa
+</td>
+
+</tr>
+
+
+<tr>
+
+<td class="label">
+Lokasi
+</td>
+
+<td class="colon">
+:
+</td>
+
+<td class="value">
+Desa Jatisari, Kecamatan Purwodadi, Kabupaten Pasuruan
+</td>
+
+</tr>
+
+
+<tr>
+
+<td class="label">
+Luas Lahan
+</td>
+
+<td class="colon">
+:
+</td>
+
+<td class="value">
+25 Hektar
+</td>
+
+</tr>
+
+
+<tr>
+
+<td class="label">
+Status Tanah
+</td>
+
+<td class="colon">
+:
+</td>
+
+<td class="value">
+AJB/ VIII/ 2026
+</td>
+
+</tr>
+
+</table>
+
+
+
+<!-- PERTIMBANGAN -->
+
+<div class="section-title">
+PERTIMBANGAN
+</div>
+
+
+<table class="consideration">
+
+<tr>
+
+<td class="number">
+1.
+</td>
+
+<td class="text">
+
+Berdasarkan hasil penelitian administrasi dan peninjauan
+lapangan, lokasi tersebut sesuai untuk peruntukan pemakaman.
+
+</td>
+
+</tr>
+
+
+<tr>
+
+<td class="number">
+2.
+</td>
+
+<td class="text">
+
+Telah mendapat dukungan/pernyataan tidak keberatan dari
+Pemerintah Desa Jatisari dan Kecamatan Purwodadi.
+
+</td>
+
+</tr>
+
+
+<tr>
+
+<td class="number">
+3.
+</td>
+
+<td class="text">
+
+Pengelolaan akan dilakukan sesuai ketentuan peraturan
+perundang-undangan, norma agama, adat istiadat, dan tidak
+mengganggu lingkungan.
+
+</td>
+
+</tr>
+
+</table>
+
+
+</section>
+
+
+
+<!-- NOMOR HALAMAN -->
+
+<div class="page-number">
+
+<span class="current-page">
+1
+</span>
+
+/
+
+<span class="total-page">
+2
+</span>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     HALAMAN 2
+========================================================= -->
+
+<section class="page">
+
+
+<!-- =====================================================
+     KOP HALAMAN 2
+====================================================== -->
+
+<header class="letterhead">
+
+<table class="letterhead-table">
+
+<tr>
+
+
+<td class="logo-cell">
+
+<img
+src="https://i.ibb.co.com/7JjVGx8V/Logo-Kabupaten-Pasuruan-Free-Download-Logo-Format-PNG-Logo-PNG-Logo-Keren.jpg"
+alt="Logo Kabupaten Pasuruan"
+>
+
+</td>
+
+
+<td class="agency-cell">
+
+<div class="agency-government">
+PEMERINTAH KABUPATEN PASURUAN
+</div>
+
+<div class="agency-name">
+DINAS PENANAMAN MODAL DAN PELAYANAN TERPADU SATU PINTU
+</div>
+
+<div class="agency-address">
+Komplek Perkantoran Pemerintah Kabupaten Pasuruan
+</div>
+
+<div class="agency-contact">
+Jalan Raya Raci Km.9-Pasuruan 67153 Telp. (0343) 4505657
+</div>
+
+<div class="agency-email">
+Website : dpmptsp.pasuruankab.go.id
+&nbsp;&nbsp;&nbsp;
+e-mail : dpmptsp@pasuruankab.go.id
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+
+<div class="letterhead-line"></div>
+
+</header>
+
+
+
+<!-- =====================================================
+     LANJUTAN ISI
+====================================================== -->
+
+<section class="content">
+
+
+<p>
+
+Dengan ini kami merekomendasikan kepada
+<strong>PT. HARMONY EVERLASTING GARDEN</strong>
+untuk dapat ditindaklanjuti proses perizinannya sesuai
+ketentuan yang berlaku.
+
+</p>
+
+
+
+<!-- CATATAN -->
+
+<div class="note">
+
+<div class="note-title">
+Catatan:
+</div>
+
+Rekomendasi ini bukan merupakan izin. Pemohon wajib
+melengkapi izin teknis dari instansi terkait: DLH,
+Dinas Perkim, BPN, dan ketentuan lainnya.
+
+</div>
+
+
+
+<!-- PENUTUP -->
+
+<div class="closing">
+
+<p>
+
+Demikian rekomendasi ini kami buat untuk dapat dipergunakan
+sebagaimana mestinya. Atas perhatiannya kami ucapkan
+terima kasih.
+
+</p>
+
+</div>
+
+
+
+<!-- =====================================================
+     TANDA TANGAN
+====================================================== -->
+
+<div class="signature">
+
+<div>
+Pasuruan,……………./……………./…….
+</div>
+
+
+<div class="signature-space"></div>
+
+
+<div class="signature-name">
+........................................
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     TEMBUSAN
+====================================================== -->
+
+<div class="copy">
+
+<div class="copy-title">
+Tembusan*
+</div>
+
+
+<ol>
+
+<li>
+Bupati Pasuruan
+</li>
+
+<li>
+Arsip
+</li>
+
+</ol>
+
+</div>
+
+
+</section>
+
+
+
+<!-- NOMOR HALAMAN -->
+
+<div class="page-number">
+
+<span class="current-page">
+2
+</span>
+
+/
+
+<span class="total-page">
+2
+</span>
+
+</div>
+
+
+</section>
+
+
+</main>
+
 
 </body>
+
 </html>
