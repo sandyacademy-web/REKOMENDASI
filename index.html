@@ -587,32 +587,37 @@ body {
 /* =========================================================
    TANDA TANGAN
 ========================================================= */
+/* =========================================================
+   AREA STEMPEL HALAMAN 2
+========================================================= */
 
-.signature {
-
+.stamp-area {
     width: 100%;
 
-    margin-top: 28mm;
+    height: 30mm;
 
-    text-align: right;
+    display: flex;
 
-    font-size: 11pt;
+    justify-content: flex-end;
 
-    line-height: 1.45;
+    align-items: center;
+
+    padding-right: 8mm;
+
+    margin-top: 1mm;
 }
 
 
-.signature-space {
+.stamp-image {
+    width: 27mm;
 
-    height: 24mm;
-}
+    height: 27mm;
 
+    object-fit: contain;
 
-.signature-name {
+    display: block;
 
-    font-weight: bold;
-
-    text-decoration: underline;
+    opacity: 0.55;
 }
 
 
@@ -1458,16 +1463,22 @@ Pasuruan,27./8./2026.
 </div>
 
 
-<div class="signature-space"></div>
+<!-- AREA STEMPEL -->
+    <div class="stamp-area">
 
+        <img
+            src="https://i.ibb.co.com/jvvT7cdx/Original-stamp-vector-Premium-Vector.jpg"
+            alt="Tempat Stempel"
+            class="stamp-image"
+        >
 
-<div class="signature-name">
+    </div>
+
+    <div class="signature-name">
+        ........................................
+    </div>
 
 </div>
-
-
-</div>
-
 
 
 <!-- =====================================================
