@@ -585,30 +585,61 @@ body {
 
 
 /* =========================================================
-   TANDA TANGAN
-========================================================= */
-/* =========================================================
-   AREA STEMPEL HALAMAN 2
+   TANDA TANGAN + STEMPEL
 ========================================================= */
 
-.stamp-area {
+.signature {
+
     width: 100%;
 
-    height: 30mm;
+    margin-top: 7mm;
+
+    font-size: 11pt;
+
+    line-height: 1.45;
+}
+
+
+.signature-right {
+
+    width: 75mm;
+
+    margin-left: auto;
+
+    text-align: center;
+}
+
+
+.signature-date {
+
+    width: 100%;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    margin-bottom: 2mm;
+}
+
+
+.stamp-area {
+
+    width: 100%;
+
+    height: 27mm;
 
     display: flex;
 
-    justify-content: flex-end;
+    justify-content: center;
 
     align-items: center;
 
-    padding-right: 8mm;
-
-    margin-top: 1mm;
+    margin: 0;
 }
 
 
 .stamp-image {
+
     width: 27mm;
 
     height: 27mm;
@@ -618,6 +649,16 @@ body {
     display: block;
 
     opacity: 0.55;
+}
+
+
+.signature-name {
+
+    margin-top: 2mm;
+
+    text-align: center;
+
+    font-weight: normal;
 }
 
 
@@ -1456,25 +1497,27 @@ kami ucapkan terima kasih.
 ====================================================== -->
 
 <div class="signature">
-<div class="signature">
 
-    <div>
-        Pasuruan,……………./……………./…….
-    </div>
+    <div class="signature-right">
 
-    <!-- AREA STEMPEL -->
-    <div class="stamp-area">
+        <div class="signature-date">
+            Pasuruan,……………./……………./…….
+        </div>
 
-        <img
-            src="https://i.ibb.co.com/jvvT7cdx/Original-stamp-vector-Premium-Vector.jpg"
-            alt="Tempat Stempel"
-            class="stamp-image"
-        >
+        <div class="stamp-area">
 
-    </div>
+            <img
+                src="https://i.ibb.co.com/jvvT7cdx/Original-stamp-vector-Premium-Vector.jpg"
+                alt="Tempat Stempel"
+                class="stamp-image"
+            >
 
-    <div class="signature-name">
-        ........................................
+        </div>
+
+        <div class="signature-name">
+            ........................................
+        </div>
+
     </div>
 
 </div>
